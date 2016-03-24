@@ -5,10 +5,13 @@ import time
 import random
 
 def listener(messages):
-    msg = ["Боля", "Сложна", "Кек", "Хех", "Мда", "Ээээ?", "Правда потом весь желудок выпердим и кишки", "Зез", "Мем", "ХЕХ", "Шо дел"]
+    ans = []
+    with open('dictionary.txt') as f:
+        ans = f.read().splitlines()
+
     for m in messages:
         if m.content_type == 'text':
-            bot.send_message(m.chat.id, random.choice(msg))
+            bot.send_message(m.chat.id, random.choice(ans))
 
 if __name__ == "__main__":
     bot = telebot.TeleBot(config.token)
